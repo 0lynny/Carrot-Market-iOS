@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import Alamofire
+
+struct NetworkConstant {
+    static let noTokenHeader : HTTPHeaders = ["Content-Type": "application/json"]
+}

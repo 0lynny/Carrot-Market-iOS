@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct URLConstant {
+    static let baseURL = "http://13.125.157.62:8000"
+    
+    static let productList = baseURL + "/feed"
+}
+
+
