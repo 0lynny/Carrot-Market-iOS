@@ -29,12 +29,9 @@ class ProductTableViewCell: UITableViewCell {
         }
         productTitleLabel.text = productData.title
         productLocationLabel.text = productData.region
-<<<<<<< Updated upstream
         productPriceLabel.text = "\(productData.price)"
-=======
         productTimeLabel.text = productData.createdAt
         productPriceLabel.text = "\(numberFormatter(Int(productData.price)))원"
->>>>>>> Stashed changes
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
