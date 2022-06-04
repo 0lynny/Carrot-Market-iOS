@@ -39,4 +39,10 @@ class ProductTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func numberFormatter(_ number: Int)->String{
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(for: number)!
+    }
 }
