@@ -29,12 +29,19 @@ class ProductTableViewCell: UITableViewCell {
         }
         productTitleLabel.text = productData.title
         productLocationLabel.text = productData.region
-        productPriceLabel.text = "\(productData.price)"
+        productTimeLabel.text = productData.createdAt
+        productPriceLabel.text = "\(numberFomatter(Int(productData.price)))원"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func numberFormatter(_ number : Int)-> String{
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(for: number)!
     }
 }
