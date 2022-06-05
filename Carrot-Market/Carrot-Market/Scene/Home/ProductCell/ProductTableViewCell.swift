@@ -11,7 +11,7 @@ class ProductTableViewCell: UITableViewCell {
     
     static let identifier = "ProductTableViewCell"
     
-    @IBOutlet weak var productimageView: UIImageView!
+    @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productTitleLabel: UILabel!
     @IBOutlet weak var productLocationLabel: UILabel!
     @IBOutlet weak var productTimeLabel: UILabel!
@@ -25,11 +25,10 @@ class ProductTableViewCell: UITableViewCell {
     
     func setProductData(_ productData: ProductDataModel) {
         if productData.image != nil {
-            productimageView.load(imgURL: productData.image)
+            productImageView.load(imgURL : productData.image)
         }
         productTitleLabel.text = productData.title
         productLocationLabel.text = productData.region
-        productPriceLabel.text = "\(productData.price)"
         productTimeLabel.text = productData.createdAt
         productPriceLabel.text = "\(numberFormatter(Int(productData.price)))원"
     }

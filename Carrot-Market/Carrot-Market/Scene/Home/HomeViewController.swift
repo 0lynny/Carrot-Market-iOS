@@ -9,9 +9,12 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var productListTableView: UITableView!
-    
     var productList : [ProductDataModel] = []
+    
+
+    @IBOutlet weak var productListTableView: UITableView!
+   
+    @IBOutlet weak var productAddButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +33,14 @@ class HomeViewController: UIViewController {
         
         productListTableView.delegate = self
         productListTableView.dataSource = self
+    }
+    
+    @IBAction func productAddButtonDidTap(_ sender: Any) {
+        print("상품추가")
+    }
+    
+    @IBAction func locationButtonDidTap(_ sender: Any) {
+        print("지역 설정")
     }
 }
 

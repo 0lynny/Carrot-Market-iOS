@@ -16,10 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jqe-Xb-iYK">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JV4-hC-QP4">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <subviews>
@@ -62,6 +58,9 @@
                                         <buttonConfiguration key="configuration" style="plain" image="and_icon_low" imagePlacement="trailing" title="보정동">
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="locationButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="JzY-xP-D0w"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -73,21 +72,36 @@
                                     <constraint firstItem="7ys-U2-RPE" firstAttribute="leading" secondItem="JV4-hC-QP4" secondAttribute="leading" constant="10" id="q2q-R7-hDX"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jPO-W6-S4j">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXO-dB-0eX">
+                                <rect key="frame" x="287" y="700" width="78" height="68"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="img_productAdd"/>
+                                <connections>
+                                    <action selector="productAddButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="U6f-Ty-03x"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="PXO-dB-0eX" secondAttribute="bottom" constant="10" id="06e-hM-J9E"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PXO-dB-0eX" secondAttribute="trailing" constant="10" id="3E2-rT-FS1"/>
                             <constraint firstItem="JV4-hC-QP4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="6Jx-An-ool"/>
-                            <constraint firstItem="jqe-Xb-iYK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7KC-6A-NtN"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="jPO-W6-S4j" secondAttribute="bottom" id="7uS-r8-17j"/>
+                            <constraint firstItem="jPO-W6-S4j" firstAttribute="top" secondItem="JV4-hC-QP4" secondAttribute="bottom" id="8mv-Vq-afJ"/>
                             <constraint firstItem="JV4-hC-QP4" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="BTC-0k-kxn"/>
+                            <constraint firstItem="jPO-W6-S4j" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Cpv-TP-XAF"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="JV4-hC-QP4" secondAttribute="trailing" id="HYa-6Q-o8E"/>
-                            <constraint firstItem="jqe-Xb-iYK" firstAttribute="top" secondItem="JV4-hC-QP4" secondAttribute="bottom" id="Ngl-gV-Bu2"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="jqe-Xb-iYK" secondAttribute="bottom" id="ePN-cM-xJF"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jqe-Xb-iYK" secondAttribute="trailing" id="rv5-IL-GHi"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jPO-W6-S4j" secondAttribute="trailing" id="vMw-Zw-V8G"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="productListTableView" destination="jqe-Xb-iYK" id="y7t-Ij-HYD"/>
+                        <outlet property="productAddButton" destination="PXO-dB-0eX" id="u4s-8Z-P2E"/>
+                        <outlet property="productListTableView" destination="jPO-W6-S4j" id="nPZ-d2-gK4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -100,6 +114,7 @@
         <image name="icn_local_navi" width="24" height="24"/>
         <image name="icn_local_navi-1" width="24" height="24"/>
         <image name="icn_local_navi-2" width="24" height="24"/>
+        <image name="img_productAdd" width="54" height="54"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -102,12 +102,12 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="productImageView" destination="K0B-70-sZY" id="PGY-JU-bLg"/>
                 <outlet property="productLikeCountLabel" destination="10a-uX-ogP" id="OJt-3q-pnD"/>
                 <outlet property="productLocationLabel" destination="PiB-54-azc" id="MUW-Bw-kbr"/>
                 <outlet property="productPriceLabel" destination="hmE-Mt-7OP" id="5vh-Wr-kVZ"/>
                 <outlet property="productTimeLabel" destination="Z0C-Zg-ezU" id="kek-wB-j91"/>
                 <outlet property="productTitleLabel" destination="qGB-jT-nHE" id="9EL-Cq-TFc"/>
-                <outlet property="productimageView" destination="K0B-70-sZY" id="PGY-JU-bLg"/>
             </connections>
             <point key="canvasLocation" x="131.15942028985509" y="130.58035714285714"/>
         </tableViewCell>
