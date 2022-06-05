@@ -7,5 +7,6 @@ target 'Carrot-Market' do
 
   # Pods for Carrot-Market
   pod 'Alamofire'
+  pod 'Kingfisher'
 
 end
