@@ -7,26 +7,26 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
     
+    // MARK: - Properties
     var productList : [ProductDataModel] = []
-    
 
+    // MARK: - @IBOutlet Properties
     @IBOutlet weak var productListTableView: UITableView!
-   
     @IBOutlet weak var productAddButton: UIButton!
     
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadProductListURL()
+        getProductList()
     }
     
+    /// MARK: - Functions
     private func setTableView() {
         let productListNib = UINib(nibName: ProductTableViewCell.className, bundle: nil)
         productListTableView.register(productListNib, forCellReuseIdentifier: ProductTableViewCell.className)
@@ -35,8 +35,13 @@ class HomeViewController: UIViewController {
         productListTableView.dataSource = self
     }
     
+    // MARK: - @IBAction Properties
     @IBAction func productAddButtonDidTap(_ sender: Any) {
-        print("상품추가")
+        guard let productAddVC = UIStoryboard(name: "ProductAddStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ProductAddViewController") as? ProductAddViewController else { return }
+
+        productAddVC.modalPresentationStyle = .fullScreen
+
+        self.present(productAddVC, animated: true, completion: nil)
     }
     
     @IBAction func locationButtonDidTap(_ sender: Any) {
@@ -44,6 +49,7 @@ class HomeViewController: UIViewController {
     }
 }
 
+// MARK: - Extensions
 extension HomeViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 136
@@ -52,9 +58,9 @@ extension HomeViewController: UITableViewDelegate{
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return productList.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.className, for: indexPath) as? ProductTableViewCell else { return UITableViewCell() }
         cell.setProductData(productList[indexPath.row])
@@ -67,8 +73,8 @@ extension HomeViewController {
         
     }
     
-    private func loadProductListURL() {
-        ProductListService.shared.loadProductListData() { networkResult in
+    private func getProductList() {
+        ProductListService.shared.getProductList() { networkResult in
             print(networkResult)
             switch networkResult {
             case .success(let res):
@@ -76,8 +82,14 @@ extension HomeViewController {
                 self.productList = response
                 self.productListTableView.reloadData()
                 print(response)
-            default:
-                print("데이터 불러오기 실패")
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
             }
         }
     }

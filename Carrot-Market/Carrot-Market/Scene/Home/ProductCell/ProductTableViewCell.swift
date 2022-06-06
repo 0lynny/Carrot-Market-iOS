@@ -7,10 +7,12 @@
 
 import UIKit
 
-class ProductTableViewCell: UITableViewCell {
+final class ProductTableViewCell: UITableViewCell {
     
+    // MARK: - Properties
     static let identifier = "ProductTableViewCell"
     
+    // MARK: - @IBOutlet Properties
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productTitleLabel: UILabel!
     @IBOutlet weak var productLocationLabel: UILabel!
@@ -23,6 +25,11 @@ class ProductTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+    
+    // MARK: - Functions
     func setProductData(_ productData: ProductDataModel) {
         if productData.image != nil {
             productImageView.load(imgURL : productData.image)
@@ -33,12 +40,6 @@ class ProductTableViewCell: UITableViewCell {
         productPriceLabel.text = "\(numberFormatter(Int(productData.price)))원"
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     func numberFormatter(_ number: Int)->String{
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
