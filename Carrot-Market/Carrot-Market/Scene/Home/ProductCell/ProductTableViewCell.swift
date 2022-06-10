@@ -32,7 +32,7 @@ final class ProductTableViewCell: UITableViewCell {
     // MARK: - Functions
     func setProductData(_ productData: ProductDataModel) {
         if productData.image != nil {
-            productImageView.load(imgURL : productData.image)
+            productImageView.setImage(productData.image)
         }
         productTitleLabel.text = productData.title
         productLocationLabel.text = productData.region
