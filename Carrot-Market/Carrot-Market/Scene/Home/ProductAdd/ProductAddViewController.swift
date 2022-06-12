@@ -21,11 +21,20 @@ final class ProductAddViewController: UIViewController {
     }
     @IBOutlet weak var priceOfferLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var bottomView: UIView!
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegate()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setKeyboardObserver()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        removeKeyboardObserver()
     }
     
     // MARK: - @IBAction Properties
@@ -57,13 +66,27 @@ final class ProductAddViewController: UIViewController {
     // MARK: - Functions
     func setDelegate() {
         contentTextView.delegate = self
-        titleTextField.delegate = self
     }
     
     func numberFormatter(_ number: Int)->String{
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         return numberFormatter.string(for: number)!
+    }
+    
+    @objc override func keyboardWillShow(notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            let safeareaHeight = self.view.safeAreaInsets.bottom
+            UIView.animate(withDuration: 1) {
+                self.bottomView.transform =
+                                    CGAffineTransform(translationX: 0, y: -(keyboardHeight - safeareaHeight))
+            }
+        }
+    }
+    
+    @objc override func keyboardWillHide(notification: NSNotification) {
+        self.bottomView.transform = .identity
     }
 }
 
@@ -79,6 +102,18 @@ extension ProductAddViewController: UITextViewDelegate {
         if textView.text.isEmpty {
             textView.text = "내용을 입력해주세요."
             textView.textColor = UIColor(named: "carrot_square_gray")
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        let size = CGSize(width: view.frame.width, height: .infinity)
+        let estimatedSize = textView.sizeThatFits(size)
+        textView.constraints.forEach { (constraint) in
+            if estimatedSize.height >= 320{
+                if constraint.firstAttribute == .height {
+                    constraint.constant = estimatedSize.height
+                }
+            }
         }
     }
 }

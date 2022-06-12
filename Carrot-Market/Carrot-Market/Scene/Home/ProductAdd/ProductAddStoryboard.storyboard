@@ -143,7 +143,7 @@
                                                     <constraint firstAttribute="height" constant="1" id="Lh1-Fr-8ty"/>
                                                 </constraints>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="내용을 입력해주세요." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IXF-oy-TiD">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="내용을 입력해주세요." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IXF-oy-TiD">
                                                 <rect key="frame" x="15" y="341" width="344" height="320"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -300,6 +300,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomView" destination="wh3-by-B4W" id="dVT-MU-qh6"/>
                         <outlet property="button" destination="dFc-ql-Bmz" id="xIS-cb-8kr"/>
                         <outlet property="categoryTextField" destination="PEx-LV-603" id="rZI-bb-iYX"/>
                         <outlet property="contentTextView" destination="IXF-oy-TiD" id="x73-kX-wSU"/>
