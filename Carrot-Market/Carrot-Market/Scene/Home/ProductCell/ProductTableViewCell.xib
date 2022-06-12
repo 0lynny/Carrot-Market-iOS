@@ -23,6 +23,11 @@
                             <constraint firstAttribute="width" constant="103" id="Qpd-6q-GVY"/>
                             <constraint firstAttribute="width" secondItem="K0B-70-sZY" secondAttribute="height" multiplier="1:1" id="Rma-oc-lhq"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상품명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGB-jT-nHE">
                         <rect key="frame" x="135" y="20" width="39" height="22"/>

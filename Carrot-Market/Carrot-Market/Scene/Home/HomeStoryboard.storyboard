@@ -96,7 +96,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="PXO-dB-0eX" secondAttribute="bottom" constant="10" id="06e-hM-J9E"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PXO-dB-0eX" secondAttribute="trailing" constant="10" id="3E2-rT-FS1"/>
@@ -125,9 +125,6 @@
         <image name="icn_local_navi-1" width="24" height="24"/>
         <image name="icn_local_navi-2" width="24" height="24"/>
         <image name="img_productAdd" width="54" height="54"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

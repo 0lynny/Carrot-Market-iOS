@@ -81,7 +81,7 @@ extension HomeViewController {
                 guard let response = res as? [ProductDataModel] else { return }
                 self.productList = response
                 self.productListTableView.reloadData()
-                print(response)
+//                print(response)
             case .requestErr(_):
                 print("requestErr")
             case .pathErr:
