@@ -54,6 +54,16 @@ extension HomeViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 136
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let productDetailVC = UIStoryboard(name: "ProductDetailStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailViewController") as? ProductDetailViewController else { return }
+
+        productDetailVC.modalPresentationStyle = .fullScreen
+        productDetailVC.modalTransitionStyle = .crossDissolve
+        productDetailVC.postId = productList[indexPath.row].id
+        
+        self.present(productDetailVC, animated: true, completion: nil)
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -63,6 +73,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.className, for: indexPath) as? ProductTableViewCell else { return UITableViewCell() }
+        cell.selectionStyle = .none
         cell.setProductData(productList[indexPath.row])
         return cell
     }
