@@ -64,14 +64,14 @@
                                                 <rect key="frame" x="131.33333333333334" y="340" width="112.66666666666666" height="25"/>
                                             </pageControl>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uT0-fa-vZu">
-                                                <rect key="frame" x="16" y="481.66666666666663" width="99" height="39"/>
+                                                <rect key="frame" x="16" y="481.66666666666663" width="110" height="39"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="39" id="K71-CU-4Km"/>
-                                                    <constraint firstAttribute="width" constant="99" id="iAO-KK-jOZ"/>
+                                                    <constraint firstAttribute="width" constant="110" id="gvo-P1-9m5"/>
                                                 </constraints>
                                                 <color key="tintColor" name="carrot_black"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="icn_arrow" imagePlacement="trailing" title="판매중 " imagePadding="25" cornerStyle="medium">
+                                                <buttonConfiguration key="configuration" style="plain" image="icn_arrow" imagePlacement="trailing" title="판매완료" imagePadding="25" cornerStyle="medium">
                                                     <backgroundConfiguration key="background">
                                                         <color key="strokeColor" name="carrot_square_gray"/>
                                                     </backgroundConfiguration>
@@ -90,7 +90,7 @@
                                                 <color key="textColor" name="carrot_darklightgray"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="qweqweqwew" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpx-KO-vaz">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용은 서버에서 안줬어요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpx-KO-vaz">
                                                 <rect key="frame" x="16" y="606.66666666666663" width="343" height="20.333333333333371"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -372,10 +372,19 @@
                     </view>
                     <connections>
                         <outlet property="bottomView" destination="PvK-03-8h6" id="Pak-kl-snV"/>
+                        <outlet property="categoryLabel" destination="zSs-AT-Czf" id="yue-H8-7QQ"/>
+                        <outlet property="createdAtLabel" destination="Dno-iz-NYO" id="VMv-bd-d7i"/>
                         <outlet property="likeButton" destination="t53-sq-jHE" id="71d-sS-3BR"/>
                         <outlet property="pageControl" destination="GEw-OZ-Tm4" id="KrI-0x-5Xk"/>
+                        <outlet property="priceLabel" destination="y0G-92-1fy" id="75l-Te-St3"/>
+                        <outlet property="priceSuggestionLabel" destination="xAz-9m-jRC" id="l0w-N2-w2G"/>
                         <outlet property="scrollView" destination="Jhq-0w-wBv" id="KtL-p0-aEx"/>
                         <outlet property="statusButton" destination="uT0-fa-vZu" id="lxJ-A4-pUz"/>
+                        <outlet property="titleLabel" destination="3uk-kz-Rpa" id="wtr-g1-uPN"/>
+                        <outlet property="userNameLabel" destination="00v-TY-H2z" id="kuz-36-jMW"/>
+                        <outlet property="userProfileImageView" destination="Kng-TH-boL" id="MP1-wv-Wfi"/>
+                        <outlet property="userRegionLabel" destination="Mp3-E6-dI9" id="Gb4-HI-IZr"/>
+                        <outlet property="viewLabel" destination="HEp-l1-r67" id="2J6-lG-zGJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
