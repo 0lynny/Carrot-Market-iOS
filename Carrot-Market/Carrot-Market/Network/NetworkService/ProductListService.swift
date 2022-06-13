@@ -11,7 +11,7 @@ struct ProductListService {
     static let shared = ProductListService()
     private init() {}
     
-    func loadProductListData(completion: @escaping (NetworkResult<Any>) -> (Void))
+    func getProductList(completion: @escaping (NetworkResult<Any>) -> (Void))
     {
         let url = URLConstant.productList
         let header: HTTPHeaders = NetworkConstant.noTokenHeader
