@@ -44,7 +44,6 @@ final class ProductAddViewController: UIViewController {
     
     @IBAction func setButtonUI(_ sender: Any) {
         button.isSelected.toggle()
-        button.setImage((button.isSelected) ? UIImage(named: "icn_check_on") : UIImage(named: "icn_check_after"), for: .normal)
     }
     
     @IBAction func priceEditChanged(_ sender: UITextField) {
