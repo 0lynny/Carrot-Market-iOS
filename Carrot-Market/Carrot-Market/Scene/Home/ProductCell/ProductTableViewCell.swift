@@ -30,7 +30,7 @@ final class ProductTableViewCell: UITableViewCell {
     }
     
     // MARK: - Functions
-    func setProductData(_ productData: ProductDataModel) {
+    func setProductData(_ productData: ProductListResponseModel) {
         if productData.image != nil {
             productImageView.setImage(productData.image)
         }

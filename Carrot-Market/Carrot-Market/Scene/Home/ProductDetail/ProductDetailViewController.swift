@@ -11,11 +11,13 @@ import SwiftUI
 class ProductDetailViewController: UIViewController {
     
     // MARK: - Properties
-    var images = [UIImage(named: "postDetail_1"),
-                  UIImage(named: "postDetail_2"),
-                  UIImage(named: "postDetail_3"),
-                  UIImage(named: "postDetail_4"),
-                  UIImage(named: "postDetail_5")]
+    var images : [String] = []
+    
+//    var images = [UIImage(named: "postDetail_1"),
+//                  UIImage(named: "postDetail_2"),
+//                  UIImage(named: "postDetail_3"),
+//                  UIImage(named: "postDetail_4"),
+//                  UIImage(named: "postDetail_5")]
     
     var imageViews = [UIImageView]()
     var postId: String?
@@ -41,12 +43,8 @@ class ProductDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegate()
-        addContentScrollView()
-        setPageControl()
         setStatusButton()
-        if let postId = postId {
-            getProductDetail(id: postId)
-        }
+        getProductDetail(id: postId ?? "")
     }
     
     // MARK: - Functions
@@ -68,15 +66,18 @@ class ProductDetailViewController: UIViewController {
         let actionSheet = UIAlertController(title: "상태 변경", message: nil, preferredStyle: .actionSheet)
         
         let activeAction = UIAlertAction(title: "판매중", style: .default) {_ in
-            self.statusButton.titleLabel?.text = "판매중"
+//            self.statusButton.titleLabel?.text = "판매중"
+            self.statusButton.setTitle("판매중", for: .normal)
             self.putProductStatus(onSale: "0")
         }
         let reservedAction = UIAlertAction(title: "예약중", style: .default) {_ in
-            self.statusButton.titleLabel?.text = "예약중"
+//            self.statusButton.titleLabel?.text = "예약중"
+            self.statusButton.setTitle("예약중", for: .normal)
             self.putProductStatus(onSale: "1")
         }
         let soldAction = UIAlertAction(title: "판매완료", style: .default) {  _ in
-            self.statusButton.titleLabel?.text = "판매완료"
+//            self.statusButton.titleLabel?.text = "판매완료"
+            self.statusButton.setTitle("판매완료", for: .normal)
             self.putProductStatus(onSale: "2")
         }
         let cancelAction = UIAlertAction(title: "닫기", style: .cancel, handler: nil)
@@ -109,9 +110,8 @@ extension ProductDetailViewController: UIScrollViewDelegate {
         for i in 0..<images.count {
             let imageView = UIImageView()
             let xPos = self.view.frame.width * CGFloat(i)
-            
             imageView.frame = CGRect(x: xPos, y: 0, width: scrollView.bounds.width, height: scrollView.bounds.height)
-            imageView.image = images[i]
+            imageView.setImage(images[i])
             scrollView.addSubview(imageView)
             scrollView.contentSize.width = imageView.frame.width * CGFloat(i + 1)
         }
@@ -129,7 +129,6 @@ extension ProductDetailViewController: UIScrollViewDelegate {
         let value = scrollView.contentOffset.x/scrollView.frame.size.width
         setPageControlSelectedPage(currentPage: Int(round(value)))
     }
-    
 }
 
 extension ProductDetailViewController {
@@ -140,6 +139,7 @@ extension ProductDetailViewController {
             case .success(let res):
                 guard let response = res as? ProductDetailResponseModel else { return }
                 print(response)
+                self.images = response.image
                 self.userNameLabel.text = response.user.name
                 self.userRegionLabel.text = response.user.region
                 switch response.onSale{
@@ -158,6 +158,8 @@ extension ProductDetailViewController {
                 self.likeButton.isSelected = response.isLiked
                 self.priceLabel.text = "\(self.numberFormatter(Int(response.price)))원"
                 self.priceSuggestionLabel.text = response.isPriceSuggestion ? "가격제안가능" : "가격제안불가"
+                self.addContentScrollView()
+                self.setPageControl()
             case .requestErr(_):
                 print("requestErr")
             case .pathErr:
