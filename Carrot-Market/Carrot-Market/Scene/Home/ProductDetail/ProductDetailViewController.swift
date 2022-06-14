@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class ProductDetailViewController: UIViewController, UIScrollViewDelegate {
+class ProductDetailViewController: UIViewController {
     
     // MARK: - Properties
     var images = [UIImage(named: "postDetail_1"),
@@ -54,30 +54,6 @@ class ProductDetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
     }
     
-    private func addContentScrollView() {
-        for i in 0..<images.count {
-            let imageView = UIImageView()
-            let xPos = self.view.frame.width * CGFloat(i)
-            imageView.frame = CGRect(x: xPos, y: 0, width: scrollView.bounds.width, height: scrollView.bounds.height)
-            imageView.image = images[i]
-            scrollView.addSubview(imageView)
-            scrollView.contentSize.width = imageView.frame.width * CGFloat(i + 1)
-        }
-    }
-    
-    private func setPageControl() {
-        pageControl.numberOfPages = images.count
-    }
-    
-    private func setPageControlSelectedPage(currentPage:Int) {
-        pageControl.currentPage = currentPage
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let value = scrollView.contentOffset.x/scrollView.frame.size.width
-        setPageControlSelectedPage(currentPage: Int(round(value)))
-    }
-    
     func numberFormatter(_ number: Int)->String{
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
@@ -88,12 +64,7 @@ class ProductDetailViewController: UIViewController, UIScrollViewDelegate {
         self.statusButton.titleLabel?.text = "판매중"
     }
     
-    // MARK: - @IBAction Properties
-    @IBAction func homeButtonDidTap(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func statusButtonDidTap(_ sender: Any) {
+    func showStatusActionSheet() {
         let actionSheet = UIAlertController(title: "상태 변경", message: nil, preferredStyle: .actionSheet)
         
         let activeAction = UIAlertAction(title: "판매중", style: .default) {_ in
@@ -118,10 +89,47 @@ class ProductDetailViewController: UIViewController, UIScrollViewDelegate {
         self.present(actionSheet, animated: true)
     }
     
+    // MARK: - @IBAction Properties
+    @IBAction func homeButtonDidTap(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func statusButtonDidTap(_ sender: Any) {
+        showStatusActionSheet()
+    }
+    
     @IBAction func likeButtonDidTap(_ sender: UIButton) {
         likeButton.isSelected.toggle()
         putProductLike()
     }
+}
+
+extension ProductDetailViewController: UIScrollViewDelegate {
+    private func addContentScrollView() {
+        for i in 0..<images.count {
+            let imageView = UIImageView()
+            let xPos = self.view.frame.width * CGFloat(i)
+            
+            imageView.frame = CGRect(x: xPos, y: 0, width: scrollView.bounds.width, height: scrollView.bounds.height)
+            imageView.image = images[i]
+            scrollView.addSubview(imageView)
+            scrollView.contentSize.width = imageView.frame.width * CGFloat(i + 1)
+        }
+    }
+    
+    private func setPageControl() {
+        pageControl.numberOfPages = images.count
+    }
+    
+    private func setPageControlSelectedPage(currentPage:Int) {
+        pageControl.currentPage = currentPage
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let value = scrollView.contentOffset.x/scrollView.frame.size.width
+        setPageControlSelectedPage(currentPage: Int(round(value)))
+    }
+    
 }
 
 extension ProductDetailViewController {

@@ -10,7 +10,7 @@ import UIKit
 final class HomeViewController: UIViewController {
     
     // MARK: - Properties
-    var productList : [ProductDataModel] = []
+    var productList : [ProductListResponseModel] = []
 
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var productListTableView: UITableView!
@@ -57,11 +57,9 @@ extension HomeViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let productDetailVC = UIStoryboard(name: "ProductDetailStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailViewController") as? ProductDetailViewController else { return }
-
         productDetailVC.modalPresentationStyle = .fullScreen
         productDetailVC.modalTransitionStyle = .crossDissolve
         productDetailVC.postId = productList[indexPath.row].id
-        
         self.present(productDetailVC, animated: true, completion: nil)
     }
 }
@@ -73,7 +71,6 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.className, for: indexPath) as? ProductTableViewCell else { return UITableViewCell() }
-        cell.selectionStyle = .none
         cell.setProductData(productList[indexPath.row])
         return cell
     }
@@ -89,7 +86,7 @@ extension HomeViewController {
             print(networkResult)
             switch networkResult {
             case .success(let res):
-                guard let response = res as? [ProductDataModel] else { return }
+                guard let response = res as? [ProductListResponseModel] else { return }
                 self.productList = response
                 self.productListTableView.reloadData()
 //                print(response)
