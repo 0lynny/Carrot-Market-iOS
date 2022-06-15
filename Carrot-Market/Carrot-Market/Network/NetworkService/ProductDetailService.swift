@@ -46,7 +46,6 @@ struct ProductDetailService {
     private func isValidProductDetailURL(data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
         guard let decodedData = try? decoder.decode(GenericResponse<ProductDetailResponseModel>.self, from: data)
-//        guard let decodedData = try? decoder.decode(ProductDetailResponseModel.self, from: data)
         else { return .pathErr }
         
         return .success(decodedData.data as Any)

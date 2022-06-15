@@ -69,12 +69,21 @@
                                                     <constraint firstAttribute="height" constant="39" id="K71-CU-4Km"/>
                                                     <constraint firstAttribute="width" constant="110" id="gvo-P1-9m5"/>
                                                 </constraints>
-                                                <color key="tintColor" name="carrot_black"/>
-                                                <inset key="titleEdgeInsets" minX="-40" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <color key="tintColor" name="carrot_linelightgray"/>
+                                                <inset key="titleEdgeInsets" minX="-35" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="판매중" image="icn_arrow">
                                                     <color key="titleColor" name="carrot_black"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="statusButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3lu-vA-dQP"/>
                                                 </connections>
@@ -103,7 +112,7 @@
                                                     <fragment content="도서">
                                                         <attributes>
                                                             <color key="NSColor" red="0.62884336709999999" green="0.62884342670000004" blue="0.62884336709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <font key="NSFont" size="13" name=".AppleSDGothicNeoI-Regular"/>
+                                                            <font key="NSFont" metaFont="system"/>
                                                             <font key="NSOriginalFont" metaFont="system"/>
                                                             <integer key="NSUnderline" value="1"/>
                                                         </attributes>
@@ -118,7 +127,7 @@
                                                     <fragment content="티켓">
                                                         <attributes>
                                                             <color key="NSColor" red="0.62884336709999999" green="0.62884342670000004" blue="0.62884336709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <font key="NSFont" size="13" name=".AppleSDGothicNeoI-Regular"/>
+                                                            <font key="NSFont" metaFont="system"/>
                                                             <font key="NSOriginalFont" metaFont="system"/>
                                                             <integer key="NSUnderline" value="1"/>
                                                         </attributes>
@@ -133,7 +142,7 @@
                                                     <fragment content="음반">
                                                         <attributes>
                                                             <color key="NSColor" red="0.62884336709999999" green="0.62884342670000004" blue="0.62884336709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <font key="NSFont" size="13" name=".AppleSDGothicNeoI-Regular"/>
+                                                            <font key="NSFont" metaFont="system"/>
                                                             <font key="NSOriginalFont" metaFont="system"/>
                                                             <integer key="NSUnderline" value="1"/>
                                                         </attributes>
@@ -234,7 +243,7 @@
                                                             <fragment content="매너온도">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.58854166666666674" green="0.58854166666666674" blue="0.58854166666666674" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" size="12" name=".AppleSDGothicNeoI-Regular"/>
+                                                                    <font key="NSFont" metaFont="cellTitle"/>
                                                                     <integer key="NSUnderline" value="1"/>
                                                                 </attributes>
                                                             </fragment>

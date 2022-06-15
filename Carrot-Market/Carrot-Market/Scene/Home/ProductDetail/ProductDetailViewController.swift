@@ -59,24 +59,21 @@ class ProductDetailViewController: UIViewController {
     }
     
     func setStatusButton() {
-        self.statusButton.titleLabel?.text = "판매중"
+        self.statusButton.layer.borderColor = UIColor(named: "carrot_square_gray")?.cgColor
     }
     
     func showStatusActionSheet() {
         let actionSheet = UIAlertController(title: "상태 변경", message: nil, preferredStyle: .actionSheet)
         
         let activeAction = UIAlertAction(title: "판매중", style: .default) {_ in
-//            self.statusButton.titleLabel?.text = "판매중"
             self.statusButton.setTitle("판매중", for: .normal)
             self.putProductStatus(onSale: "0")
         }
         let reservedAction = UIAlertAction(title: "예약중", style: .default) {_ in
-//            self.statusButton.titleLabel?.text = "예약중"
             self.statusButton.setTitle("예약중", for: .normal)
             self.putProductStatus(onSale: "1")
         }
         let soldAction = UIAlertAction(title: "판매완료", style: .default) {  _ in
-//            self.statusButton.titleLabel?.text = "판매완료"
             self.statusButton.setTitle("판매완료", for: .normal)
             self.putProductStatus(onSale: "2")
         }
