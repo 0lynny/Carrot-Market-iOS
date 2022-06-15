@@ -13,12 +13,6 @@ class ProductDetailViewController: UIViewController {
     // MARK: - Properties
     var images : [String] = []
     
-//    var images = [UIImage(named: "postDetail_1"),
-//                  UIImage(named: "postDetail_2"),
-//                  UIImage(named: "postDetail_3"),
-//                  UIImage(named: "postDetail_4"),
-//                  UIImage(named: "postDetail_5")]
-    
     var imageViews = [UIImageView]()
     var postId: String?
     var onSale: String = "0"
@@ -141,11 +135,11 @@ extension ProductDetailViewController {
                 self.userRegionLabel.text = response.user.region
                 switch response.onSale{
                     case "0":
-                        self.statusButton.titleLabel?.text = "판매중"
+                        self.statusButton.setTitle("판매중", for: .normal)
                     case "1":
-                        self.statusButton.titleLabel?.text = "예약중"
+                        self.statusButton.setTitle("예약중", for: .normal)
                     case "2":
-                        self.statusButton.titleLabel?.text = "판매완료"
+                        self.statusButton.setTitle("판매완료", for: .normal)
                     default: break
                 }
                 self.titleLabel.text = response.title
