@@ -8,5 +8,6 @@ target 'Carrot-Market' do
   # Pods for Carrot-Market
   pod 'Alamofire'
   pod 'Kingfisher'
+  pod 'BSImagePicker', '~> 3.1' 
 
 end
