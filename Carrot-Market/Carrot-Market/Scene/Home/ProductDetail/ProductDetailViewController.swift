@@ -12,7 +12,6 @@ class ProductDetailViewController: UIViewController {
     
     // MARK: - Properties
     var images : [String] = []
-    
     var imageViews = [UIImageView]()
     var postId: String?
     var onSale: String = "0"
@@ -81,6 +80,28 @@ class ProductDetailViewController: UIViewController {
         self.present(actionSheet, animated: true)
     }
     
+    func setDetailData(response : ProductDetailResponseModel){
+        self.images = response.image
+        self.userNameLabel.text = response.user.name
+        self.userRegionLabel.text = response.user.region
+        switch response.onSale{
+            case "0":
+                self.statusButton.setTitle("판매중", for: .normal)
+            case "1":
+                self.statusButton.setTitle("예약중", for: .normal)
+            case "2":
+                self.statusButton.setTitle("판매완료", for: .normal)
+            default: break
+        }
+        self.titleLabel.text = response.title
+        self.categoryLabel.text = response.category
+        self.createdAtLabel.text = response.createdAt
+        self.viewLabel.text = "조회 \(response.view)"
+        self.likeButton.isSelected = response.isLiked
+        self.priceLabel.text = "\(self.numberFormatter(Int(response.price)))원"
+        self.priceSuggestionLabel.text = response.isPriceSuggestion ? "가격제안가능" : "가격제안불가"
+    }
+    
     // MARK: - @IBAction Properties
     @IBAction func homeButtonDidTap(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -91,8 +112,8 @@ class ProductDetailViewController: UIViewController {
     }
     
     @IBAction func likeButtonDidTap(_ sender: UIButton) {
-        likeButton.isSelected.toggle()
         putProductLike()
+        likeButton.isSelected.toggle()
     }
 }
 
@@ -129,26 +150,7 @@ extension ProductDetailViewController {
             switch networkResult {
             case .success(let res):
                 guard let response = res as? ProductDetailResponseModel else { return }
-                print(response)
-                self.images = response.image
-                self.userNameLabel.text = response.user.name
-                self.userRegionLabel.text = response.user.region
-                switch response.onSale{
-                    case "0":
-                        self.statusButton.setTitle("판매중", for: .normal)
-                    case "1":
-                        self.statusButton.setTitle("예약중", for: .normal)
-                    case "2":
-                        self.statusButton.setTitle("판매완료", for: .normal)
-                    default: break
-                }
-                self.titleLabel.text = response.title
-                self.categoryLabel.text = response.category
-                self.createdAtLabel.text = response.createdAt
-                self.viewLabel.text = "조회 \(response.view)"
-                self.likeButton.isSelected = response.isLiked
-                self.priceLabel.text = "\(self.numberFormatter(Int(response.price)))원"
-                self.priceSuggestionLabel.text = response.isPriceSuggestion ? "가격제안가능" : "가격제안불가"
+                self.setDetailData(response: response)
                 self.addContentScrollView()
                 self.setPageControl()
             case .requestErr(_):
@@ -168,9 +170,8 @@ extension ProductDetailViewController {
             networkResult in
             print(networkResult)
             switch networkResult {
-            case .success(let res):
-                guard let response = res as? ProductStatusResponseModel else { return }
-                print(response)
+            case .success(_):
+                print("success")
             case .requestErr(_):
                 print("requestErr")
             case .pathErr:
@@ -188,9 +189,9 @@ extension ProductDetailViewController {
             networkResult in
             print(networkResult)
             switch networkResult {
-            case .success(let res):
-                guard let response = res as? ProductLikeResponseModel else { return }
-                print(response)
+            case .success(_):
+                print("success")
+//                self.likeButton.isSelected.toggle()
             case .requestErr(_):
                 print("requestErr")
             case .pathErr:
