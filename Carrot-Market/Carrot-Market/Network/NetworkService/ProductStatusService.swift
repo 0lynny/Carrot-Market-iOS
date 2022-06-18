@@ -1,22 +1,28 @@
 //
-//  productService.swift
+//  ProductStatusService.swift
 //  Carrot-Market
 //
-//  Created by 최영린 on 2022/06/04.
+//  Created by 최영린 on 2022/06/13.
 //
+
 import Foundation
 import Alamofire
 
-struct ProductListService {
-    static let shared = ProductListService()
+struct ProductStatusService {
+    static let shared = ProductStatusService()
     private init() {}
     
-    func getProductList(completion: @escaping (NetworkResult<Any>) -> (Void))
+    func putProductStatus(dataModel : ProductStatusRequestModel, completion: @escaping (NetworkResult<Any>) -> (Void))
     {
-        let url = URLConstant.productList
+        let url = URLConstant.productStatus
         let header: HTTPHeaders = NetworkConstant.noTokenHeader
+        let body: Parameters = [
+            "id": dataModel.id,
+            "onSale": dataModel.onSale
+        ]
         let dataRequest = AF.request(url,
-                                     method: .get,
+                                     method: .put,
+                                     parameters: body,
                                      encoding: JSONEncoding.default,
                                      headers: header)
         
@@ -36,15 +42,15 @@ struct ProductListService {
     private func judgeStatus (by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
         print(statusCode)
         switch statusCode {
-        case 200: return isValidProductListURL(data: data)
+        case 200: return isValidProductStatusURL(data: data)
         case 500: return .serverErr
         default: return .networkFail
         }
     }
     
-    private func isValidProductListURL(data: Data) -> NetworkResult<Any> {
+    private func isValidProductStatusURL(data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<[ProductListResponseModel]>.self, from: data)
+        guard let decodedData = try? decoder.decode(GenericResponse<ProductStatusResponseModel>.self, from: data)
         else { return .pathErr }
         
         return .success(decodedData.data as Any)

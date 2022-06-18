@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProductDataModel: Codable {
+struct ProductListResponseModel: Codable {
     let id, title: String
     let region: String
     let image: String?

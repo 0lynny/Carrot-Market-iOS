@@ -1,22 +1,23 @@
 //
-//  productService.swift
+//  ProductLikeService.swift
 //  Carrot-Market
 //
-//  Created by 최영린 on 2022/06/04.
+//  Created by 최영린 on 2022/06/13.
 //
+
 import Foundation
 import Alamofire
 
-struct ProductListService {
-    static let shared = ProductListService()
+struct ProductLikeService {
+    static let shared = ProductLikeService()
     private init() {}
     
-    func getProductList(completion: @escaping (NetworkResult<Any>) -> (Void))
+    func putProductLike(dataModel: ProductLikeRequestModel, completion: @escaping (NetworkResult<Any>) -> (Void))
     {
-        let url = URLConstant.productList
+        let url = URLConstant.productLike + "\(dataModel.id)"
         let header: HTTPHeaders = NetworkConstant.noTokenHeader
         let dataRequest = AF.request(url,
-                                     method: .get,
+                                     method: .put,
                                      encoding: JSONEncoding.default,
                                      headers: header)
         
@@ -36,15 +37,15 @@ struct ProductListService {
     private func judgeStatus (by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
         print(statusCode)
         switch statusCode {
-        case 200: return isValidProductListURL(data: data)
+        case 200: return isValidProductLikeURL(data: data)
         case 500: return .serverErr
         default: return .networkFail
         }
     }
     
-    private func isValidProductListURL(data: Data) -> NetworkResult<Any> {
+    private func isValidProductLikeURL(data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<[ProductListResponseModel]>.self, from: data)
+        guard let decodedData = try? decoder.decode(GenericResponse<ProductLikeResponseModel>.self, from: data)
         else { return .pathErr }
         
         return .success(decodedData.data as Any)
