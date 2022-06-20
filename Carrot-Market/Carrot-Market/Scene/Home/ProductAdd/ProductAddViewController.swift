@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import BSImagePicker
 
 final class ProductAddViewController: UIViewController {
 
     // MARK: - @IBOutlet Properties
+    private var photoModel: PhotoDataModel = PhotoDataModel()
+    
+    @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var priceLabel: UILabel!
@@ -39,7 +43,7 @@ final class ProductAddViewController: UIViewController {
     
     // MARK: - @IBAction Properties
     @IBAction func cancelButtonDidTap(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func setButtonUI(_ sender: Any) {
@@ -62,9 +66,10 @@ final class ProductAddViewController: UIViewController {
         }
     }
     
-    // MARK: - Functions
     func setDelegate() {
         contentTextView.delegate = self
+        photoCollectionView.delegate = self
+        photoCollectionView.dataSource = self
     }
     
     func numberFormatter(_ number: Int)->String{
@@ -86,6 +91,73 @@ final class ProductAddViewController: UIViewController {
     
     @objc override func keyboardWillHide(notification: NSNotification) {
         self.bottomView.transform = .identity
+    }
+}
+
+extension ProductAddViewController: UICollectionViewDelegate{
+    
+}
+
+extension ProductAddViewController: UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photoModel.userSelectedImages.count + 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let addPhotoIdentifier = AddPhotoCVC.identifier
+        let listPhotoIdentifer = ListPhotoCVC.identifier
+
+        if indexPath.item == 0 {
+            guard let addPhotoCell = collectionView.dequeueReusableCell(withReuseIdentifier: addPhotoIdentifier, for: indexPath) as? AddPhotoCVC else { fatalError("Failed to dequeue cell for AddPhotoCVC") }
+            addPhotoCell.delegate = self
+            
+            if photoModel.userSelectedImages.count == 0 {
+                addPhotoCell.countLabel.textColor = UIColor(named: "carrot_linegray")
+            } else {
+                addPhotoCell.countLabel.textColor = UIColor(named: "carrot_text_orange")
+            }
+            addPhotoCell.countLabel.text = "\(photoModel.userSelectedImages.count)"
+            
+            return addPhotoCell
+        } else {
+            guard let listPhotoCell = collectionView.dequeueReusableCell(withReuseIdentifier: listPhotoIdentifer, for: indexPath) as? ListPhotoCVC else { fatalError("Failed to dequeue cell for ListPhotoCVC") }
+            listPhotoCell.delegate = self
+            listPhotoCell.indexPath = indexPath.item
+        
+            if photoModel.userSelectedImages.count > 0 {
+                listPhotoCell.photoImageView.image = photoModel.userSelectedImages[indexPath.item - 1]
+            }
+            return listPhotoCell
+        }
+    }
+}
+
+extension ProductAddViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 80, height: 80)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+}
+
+extension ProductAddViewController: AddImageDelegate {
+    func didPickImagesToUpload(images: [UIImage]) {
+        photoModel.userSelectedImages = images
+        photoCollectionView.reloadData()
+    }
+}
+
+extension ProductAddViewController: ListPhotoCVCDelegate {
+    func didPressDeleteBtn(at index: Int) {
+        photoModel.userSelectedImages.remove(at: index - 1)
+        photoCollectionView.reloadData()
     }
 }
 
