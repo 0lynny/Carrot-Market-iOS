@@ -24,6 +24,8 @@ final class CustomTabBarViewContorller: UITabBarController {
               let myCarrotViewController = UIStoryboard.init(name: "MyCarrotStoryboard", bundle: nil).instantiateViewController(withIdentifier:                 MyCarrotViewController.className) as? MyCarrotViewController
         else { return }
         
+        let homeNavigationViewController = UINavigationController(rootViewController: homeViewController)
+        
         tabBar.unselectedItemTintColor = .black
         tabBar.tintColor = .black
         
@@ -32,8 +34,8 @@ final class CustomTabBarViewContorller: UITabBarController {
         nearbyViewController.tabBarItem = UITabBarItem (title: "", image: UIImage(named: "icn_nearby"), selectedImage: UIImage(named: "icn_nearby_selected" ))
         chatsViewController.tabBarItem = UITabBarItem (title: "", image: UIImage(named: "icn_chats"), selectedImage: UIImage(named: "icn_chats_selected" ))
         myCarrotViewController.tabBarItem = UITabBarItem (title: "", image: UIImage(named: "icn_myCarrot"), selectedImage: UIImage(named: "icn_myCarrot_selected" ))
-        
-        setViewControllers([homeViewController, myLocalViewController, nearbyViewController, chatsViewController, myCarrotViewController], animated: true)
+
+        setViewControllers([homeNavigationViewController, myLocalViewController, nearbyViewController, chatsViewController, myCarrotViewController], animated: true)
     }
 }
 
