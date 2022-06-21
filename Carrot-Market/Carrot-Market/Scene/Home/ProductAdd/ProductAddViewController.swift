@@ -8,11 +8,18 @@
 import UIKit
 import BSImagePicker
 
+enum Cell : Int {
+    case addCell = 0, photoCell
+}
+
 final class ProductAddViewController: UIViewController {
 
     // MARK: - @IBOutlet Properties
-    private var photoModel: PhotoDataModel = PhotoDataModel()
-    
+    private var photoModel: PhotoDataModel = PhotoDataModel() {
+        didSet{
+            photoCollectionView.reloadData()
+        }
+    }
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var categoryTextField: UITextField!
@@ -94,33 +101,23 @@ final class ProductAddViewController: UIViewController {
     }
 }
 
-extension ProductAddViewController: UICollectionViewDelegate{
-    
-}
-
-extension ProductAddViewController: UICollectionViewDataSource{
+extension ProductAddViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoModel.userSelectedImages.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let addPhotoIdentifier = AddPhotoCVC.identifier
         let listPhotoIdentifer = ListPhotoCVC.identifier
 
-        if indexPath.item == 0 {
+        switch indexPath.item {
+        case Cell.addCell.rawValue:
             guard let addPhotoCell = collectionView.dequeueReusableCell(withReuseIdentifier: addPhotoIdentifier, for: indexPath) as? AddPhotoCVC else { fatalError("Failed to dequeue cell for AddPhotoCVC") }
             addPhotoCell.delegate = self
-            
-            if photoModel.userSelectedImages.count == 0 {
-                addPhotoCell.countLabel.textColor = UIColor(named: "carrot_linegray")
-            } else {
-                addPhotoCell.countLabel.textColor = UIColor(named: "carrot_text_orange")
-            }
+            addPhotoCell.countLabel.textColor =  photoModel.userSelectedImages.count == 0 ? UIColor(named: "carrot_linegray") : UIColor(named: "carrot_text_orange")
             addPhotoCell.countLabel.text = "\(photoModel.userSelectedImages.count)"
-            
             return addPhotoCell
-        } else {
+        default:
             guard let listPhotoCell = collectionView.dequeueReusableCell(withReuseIdentifier: listPhotoIdentifer, for: indexPath) as? ListPhotoCVC else { fatalError("Failed to dequeue cell for ListPhotoCVC") }
             listPhotoCell.delegate = self
             listPhotoCell.indexPath = indexPath.item
@@ -150,14 +147,12 @@ extension ProductAddViewController: UICollectionViewDelegateFlowLayout {
 extension ProductAddViewController: AddImageDelegate {
     func didPickImagesToUpload(images: [UIImage]) {
         photoModel.userSelectedImages = images
-        photoCollectionView.reloadData()
     }
 }
 
 extension ProductAddViewController: ListPhotoCVCDelegate {
     func didPressDeleteBtn(at index: Int) {
         photoModel.userSelectedImages.remove(at: index - 1)
-        photoCollectionView.reloadData()
     }
 }
 

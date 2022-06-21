@@ -27,12 +27,11 @@ final class HomeViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    /// MARK: - Functions
+    // MARK: - Functions
     private func setTableView() {
         let productListNib = UINib(nibName: ProductTableViewCell.className, bundle: nil)
-
         productListTableView.register(productListNib, forCellReuseIdentifier: ProductTableViewCell.className)
-        
+
         productListTableView.delegate = self
         productListTableView.dataSource = self
     }
@@ -40,7 +39,6 @@ final class HomeViewController: UIViewController {
     // MARK: - @IBAction Properties
     @IBAction func productAddButtonDidTap(_ sender: Any) {
         guard let productAddVC = UIStoryboard(name: "ProductAddStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ProductAddViewController") as? ProductAddViewController else { return }
-        print("!2312313")
         self.navigationController?.pushViewController(productAddVC, animated: true)
     }
     
@@ -89,7 +87,6 @@ extension HomeViewController {
                 guard let response = res as? [ProductListResponseModel] else { return }
                 self.productList = response
                 self.productListTableView.reloadData()
-//                print(response)
             case .requestErr(_):
                 print("requestErr")
             case .pathErr:
