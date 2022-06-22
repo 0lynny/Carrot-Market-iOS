@@ -6,24 +6,49 @@
 //
 
 import UIKit
+import NMapsMap
+import CoreLocation
 
-class NearbyViewController: UIViewController {
-
+class NearbyViewController: UIViewController, CLLocationManagerDelegate {
+    
+    // MARK: - Properties
+    var locationManager = CLLocationManager()
+    
+    // MARK: - @IBOutlet Properties
+    @IBOutlet weak var mapView: NMFMapView!
+    
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setdelegate()
+        setMapUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Functions
+    func setdelegate() {
+        locationManager.delegate = self
     }
-    */
-
+    
+    func setMapUI() {
+        mapView.positionMode = .direction
+        mapView.animationDuration = 0.3
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            print("위치 서비스 On 상태")
+            locationManager.startUpdatingLocation()
+            
+            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: locationManager.location?.coordinate.latitude ?? 0, lng: locationManager.location?.coordinate.longitude ?? 0))
+            cameraUpdate.animation = .easeIn
+            mapView.moveCamera(cameraUpdate)
+        } else {
+            print("위치 서비스 Off 상태")
+        }
+    }
 }
+
+
+
+

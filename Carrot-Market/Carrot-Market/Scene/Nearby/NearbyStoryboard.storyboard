@@ -15,18 +15,66 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1h-kA-h7i" customClass="NMFMapView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7m1-jb-h3d">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hv8-GI-muh">
+                                        <rect key="frame" x="0.0" y="43" width="414" height="1"/>
+                                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="3AT-fw-gYE"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="당근지도" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Nh-jt-Aan">
+                                        <rect key="frame" x="176" y="11.5" width="62.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="H2n-jd-dwY"/>
+                                    <constraint firstItem="7Nh-jt-Aan" firstAttribute="centerY" secondItem="7m1-jb-h3d" secondAttribute="centerY" id="HNp-id-vr8"/>
+                                    <constraint firstAttribute="trailing" secondItem="hv8-GI-muh" secondAttribute="trailing" id="HUi-Wj-M1v"/>
+                                    <constraint firstAttribute="bottom" secondItem="hv8-GI-muh" secondAttribute="bottom" id="YIL-M2-ajX"/>
+                                    <constraint firstItem="hv8-GI-muh" firstAttribute="leading" secondItem="7m1-jb-h3d" secondAttribute="leading" id="tI9-Kz-kOr"/>
+                                    <constraint firstItem="7Nh-jt-Aan" firstAttribute="centerX" secondItem="7m1-jb-h3d" secondAttribute="centerX" id="yR5-M6-Nvm"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7m1-jb-h3d" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="2pc-Zf-dHt"/>
+                            <constraint firstItem="F1h-kA-h7i" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="FnV-At-AkF"/>
+                            <constraint firstItem="F1h-kA-h7i" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="HqJ-jw-rqy"/>
+                            <constraint firstItem="F1h-kA-h7i" firstAttribute="top" secondItem="7m1-jb-h3d" secondAttribute="bottom" id="IUQ-dI-XuK"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7m1-jb-h3d" secondAttribute="trailing" id="UoF-jt-Akj"/>
+                            <constraint firstItem="F1h-kA-h7i" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="VFt-IR-xqS"/>
+                            <constraint firstItem="7m1-jb-h3d" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Wtg-6z-WYS"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="F1h-kA-h7i" id="Hq1-Js-QaU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="116"/>
+            <point key="canvasLocation" x="131.8840579710145" y="115.84821428571428"/>
         </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

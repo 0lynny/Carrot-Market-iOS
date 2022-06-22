@@ -2,3 +2,4 @@ ${PODS_ROOT}/Target Support Files/Pods-Carrot-Market/Pods-Carrot-Market-framewor
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/BSImagePicker/BSImagePicker.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/NMapsMap/NMapsMap.framework/NMapsMap
