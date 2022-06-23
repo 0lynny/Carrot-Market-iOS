@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>위치?</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>위치쓸거임?</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>위치쓸거임?</string>
+	<key>NMFClientId</key>
+	<string>8zr6we94nn</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
