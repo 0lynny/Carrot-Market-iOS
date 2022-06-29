@@ -29,26 +29,37 @@ class NearbyViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
     }
     
+    func setCamera() {
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: locationManager.location?.coordinate.latitude ?? 0, lng: locationManager.location?.coordinate.longitude ?? 0))
+        cameraUpdate.animation = .easeIn
+        mapView.moveCamera(cameraUpdate)
+    }
+    
+    func setMarker() {
+        let marker = NMFMarker()
+        marker.position = NMGLatLng(lat: locationManager.location?.coordinate.latitude ?? 0, lng: locationManager.location?.coordinate.longitude ?? 0)
+        marker.mapView = mapView
+        marker.iconImage = NMFOverlayImage(name: "carrot_Marker")
+        marker.width = 70
+        marker.height = 70
+    }
+    
     func setMapUI() {
         mapView.positionMode = .direction
         mapView.animationDuration = 0.3
-        
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        
+
         if CLLocationManager.locationServicesEnabled() {
             print("위치 서비스 On 상태")
             locationManager.startUpdatingLocation()
-            
-            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: locationManager.location?.coordinate.latitude ?? 0, lng: locationManager.location?.coordinate.longitude ?? 0))
-            cameraUpdate.animation = .easeIn
-            mapView.moveCamera(cameraUpdate)
+            setCamera()
+            setMarker()
         } else {
             print("위치 서비스 Off 상태")
         }
     }
 }
-
 
 
 
