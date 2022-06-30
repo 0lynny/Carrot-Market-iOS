@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -51,12 +52,13 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="F1h-kA-h7i" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="1qR-Bp-wjc"/>
                             <constraint firstItem="7m1-jb-h3d" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="2pc-Zf-dHt"/>
                             <constraint firstItem="F1h-kA-h7i" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="FnV-At-AkF"/>
                             <constraint firstItem="F1h-kA-h7i" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="HqJ-jw-rqy"/>
                             <constraint firstItem="F1h-kA-h7i" firstAttribute="top" secondItem="7m1-jb-h3d" secondAttribute="bottom" id="IUQ-dI-XuK"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7m1-jb-h3d" secondAttribute="trailing" id="UoF-jt-Akj"/>
-                            <constraint firstItem="F1h-kA-h7i" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="VFt-IR-xqS"/>
+                            <constraint firstAttribute="trailing" secondItem="F1h-kA-h7i" secondAttribute="trailing" id="Vjb-yh-nUc"/>
                             <constraint firstItem="7m1-jb-h3d" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Wtg-6z-WYS"/>
                         </constraints>
                     </view>
@@ -68,8 +70,111 @@
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="115.84821428571428"/>
         </scene>
+        <!--Marker Bottom Sheet-->
+        <scene sceneID="e7n-uy-aNR">
+            <objects>
+                <viewController storyboardIdentifier="MarkerBottomSheet" id="Cgr-Gd-wI1" customClass="MarkerBottomSheet" customModule="Carrot_Market" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qgH-IZ-3rP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dpg-Je-4bp">
+                                <rect key="frame" x="15" y="662" width="384" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오복함흥냉면" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKI-r4-poK">
+                                        <rect key="frame" x="25" y="25" width="93.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="냉면 206m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6r9-KX-V50">
+                                        <rect key="frame" x="143.5" y="26.5" width="71" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="YCe-y2-7YY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" name="carrot_darklightgray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="조오리 옥천면" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCB-YN-YzD">
+                                        <rect key="frame" x="55" y="65.5" width="82" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="0Da-tf-9i6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" name="carrot_darklightgray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_face" translatesAutoresizingMaskIntoConstraints="NO" id="etR-8b-1Df">
+                                        <rect key="frame" x="25" y="66" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="YFY-Ks-lSK"/>
+                                            <constraint firstAttribute="width" constant="20" id="sdI-9J-FND"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오복함흥은 골목식당 나온 곳이구요. 동아냉면은 매콤한 물냉면 좋아하시면 추천! 헬푸파미해요 &gt;&lt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bwy-LI-c5z">
+                                        <rect key="frame" x="25" y="106.5" width="334" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWe-l5-8ge">
+                                        <rect key="frame" x="344" y="160" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="2yG-Ka-KUO"/>
+                                            <constraint firstAttribute="height" constant="30" id="rPZ-rY-8co"/>
+                                        </constraints>
+                                        <color key="tintColor" name="carrot_black"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="bookmark" catalog="system"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="6r9-KX-V50" firstAttribute="centerY" secondItem="CKI-r4-poK" secondAttribute="centerY" id="4jF-Rx-NOo"/>
+                                    <constraint firstItem="CKI-r4-poK" firstAttribute="leading" secondItem="Dpg-Je-4bp" secondAttribute="leading" constant="25" id="7o8-1D-k3E"/>
+                                    <constraint firstItem="etR-8b-1Df" firstAttribute="leading" secondItem="Dpg-Je-4bp" secondAttribute="leading" constant="25" id="AQG-l4-5iR"/>
+                                    <constraint firstItem="Bwy-LI-c5z" firstAttribute="leading" secondItem="Dpg-Je-4bp" secondAttribute="leading" constant="25" id="HHF-Er-dWQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="qWe-l5-8ge" secondAttribute="trailing" constant="10" id="K1G-fD-tVK"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bwy-LI-c5z" secondAttribute="trailing" constant="25" id="Ubq-hf-bFk"/>
+                                    <constraint firstItem="6r9-KX-V50" firstAttribute="leading" secondItem="CKI-r4-poK" secondAttribute="trailing" constant="25" id="WNT-rE-K4E"/>
+                                    <constraint firstAttribute="bottom" secondItem="qWe-l5-8ge" secondAttribute="bottom" constant="10" id="X9D-dP-MxA"/>
+                                    <constraint firstItem="CKI-r4-poK" firstAttribute="top" secondItem="Dpg-Je-4bp" secondAttribute="top" constant="25" id="YVi-R5-zQl"/>
+                                    <constraint firstItem="Bwy-LI-c5z" firstAttribute="top" secondItem="KCB-YN-YzD" secondAttribute="bottom" constant="20" id="flT-9S-gFa"/>
+                                    <constraint firstItem="KCB-YN-YzD" firstAttribute="centerY" secondItem="etR-8b-1Df" secondAttribute="centerY" id="gBE-Dy-HFN"/>
+                                    <constraint firstItem="etR-8b-1Df" firstAttribute="top" secondItem="CKI-r4-poK" secondAttribute="bottom" constant="20" id="sun-cS-ROr"/>
+                                    <constraint firstAttribute="height" constant="200" id="xZI-4q-hXI"/>
+                                    <constraint firstItem="KCB-YN-YzD" firstAttribute="leading" secondItem="etR-8b-1Df" secondAttribute="trailing" constant="10" id="yat-xL-P7s"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wyX-yj-MTV"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="wyX-yj-MTV" firstAttribute="trailing" secondItem="Dpg-Je-4bp" secondAttribute="trailing" constant="15" id="87g-pP-DJI"/>
+                            <constraint firstItem="Dpg-Je-4bp" firstAttribute="leading" secondItem="wyX-yj-MTV" secondAttribute="leading" constant="15" id="UY8-ar-PQ2"/>
+                            <constraint firstItem="wyX-yj-MTV" firstAttribute="bottom" secondItem="Dpg-Je-4bp" secondAttribute="bottom" id="emm-vw-LOJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomSheetHeight" destination="xZI-4q-hXI" id="TbJ-yi-2Gt"/>
+                        <outlet property="bottomSheetView" destination="Dpg-Je-4bp" id="MNd-Qk-s6J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fk5-6z-9Dv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="915.94202898550736" y="115.84821428571428"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="bookmark" catalog="system" width="112" height="128"/>
+        <image name="icn_face" width="24" height="24"/>
+        <namedColor name="carrot_black">
+            <color red="0.10599999874830246" green="0.10199999809265137" blue="0.12200000137090683" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="carrot_darklightgray">
+            <color red="0.51800000667572021" green="0.53299999237060547" blue="0.57300001382827759" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

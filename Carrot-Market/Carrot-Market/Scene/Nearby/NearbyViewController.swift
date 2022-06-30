@@ -37,19 +37,31 @@ class NearbyViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func setMarker() {
+        guard let customBottomSheet = self.storyboard?.instantiateViewController(withIdentifier: "MarkerBottomSheet") as? MarkerBottomSheet else { return }
+        
         let marker = NMFMarker()
         marker.iconImage = NMFOverlayImage(name: "carrot_Marker")
         marker.width = 50
         marker.height = 50
         marker.position = NMGLatLng(lat: locationManager.location?.coordinate.latitude ?? 0, lng: locationManager.location?.coordinate.longitude ?? 0)
         marker.touchHandler = { (overlay) -> Bool in
-            marker.width = marker.width == 70 ? 50 : 70
-            marker.height = marker.height == 70 ? 50 : 70
+            self.changeMarker(marker)
+            customBottomSheet.modalTransitionStyle = .crossDissolve
+            customBottomSheet.modalPresentationStyle = .overFullScreen
+            customBottomSheet.marker = marker
+            self.present(customBottomSheet, animated: false) {
+                customBottomSheet.showBottomSheetWithAnimation()
+            }
             return false
         }
         marker.mapView = mapView
     }
     
+    func changeMarker(_ marker:NMFMarker) {
+        marker.width = marker.width == 70 ? 50 : 70
+        marker.height = marker.height == 70 ? 50 : 70
+    }
+     
     func setMapUI() {
         mapView.positionMode = .direction
         mapView.animationDuration = 0.3
@@ -69,7 +81,7 @@ class NearbyViewController: UIViewController, CLLocationManagerDelegate {
 
 extension NearbyViewController : NMFMapViewTouchDelegate{
     func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
-        print("지도 클릭")
+
     }
 }
 
