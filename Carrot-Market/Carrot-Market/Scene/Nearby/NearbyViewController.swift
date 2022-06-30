@@ -27,6 +27,7 @@ class NearbyViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: - Functions
     func setdelegate() {
         locationManager.delegate = self
+        mapView.touchDelegate = self
     }
     
     func setCamera() {
@@ -37,11 +38,16 @@ class NearbyViewController: UIViewController, CLLocationManagerDelegate {
     
     func setMarker() {
         let marker = NMFMarker()
-        marker.position = NMGLatLng(lat: locationManager.location?.coordinate.latitude ?? 0, lng: locationManager.location?.coordinate.longitude ?? 0)
-        marker.mapView = mapView
         marker.iconImage = NMFOverlayImage(name: "carrot_Marker")
-        marker.width = 70
-        marker.height = 70
+        marker.width = 50
+        marker.height = 50
+        marker.position = NMGLatLng(lat: locationManager.location?.coordinate.latitude ?? 0, lng: locationManager.location?.coordinate.longitude ?? 0)
+        marker.touchHandler = { (overlay) -> Bool in
+            marker.width = marker.width == 70 ? 50 : 70
+            marker.height = marker.height == 70 ? 50 : 70
+            return false
+        }
+        marker.mapView = mapView
     }
     
     func setMapUI() {
@@ -58,6 +64,12 @@ class NearbyViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             print("위치 서비스 Off 상태")
         }
+    }
+}
+
+extension NearbyViewController : NMFMapViewTouchDelegate{
+    func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
+        print("지도 클릭")
     }
 }
 
