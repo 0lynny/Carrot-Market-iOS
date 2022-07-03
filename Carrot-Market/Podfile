@@ -10,5 +10,5 @@ target 'Carrot-Market' do
   pod 'Kingfisher'
   pod 'BSImagePicker', '~> 3.1' 
   pod 'NMapsMap'
-
+  pod 'SnapKit', '~>5.6.0'
 end

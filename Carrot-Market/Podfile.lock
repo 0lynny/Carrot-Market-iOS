@@ -3,12 +3,14 @@ PODS:
   - BSImagePicker (3.3.1)
   - Kingfisher (7.2.2)
   - NMapsMap (3.15.0)
+  - SnapKit (5.6.0)
 
 DEPENDENCIES:
   - Alamofire
   - BSImagePicker (~> 3.1)
   - Kingfisher
   - NMapsMap
+  - SnapKit (~> 5.6.0)
 
 SPEC REPOS:
   trunk:
@@ -16,13 +18,15 @@ SPEC REPOS:
     - BSImagePicker
     - Kingfisher
     - NMapsMap
+    - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
   BSImagePicker: 0fe04b574d4d6b81093785d2af6c26227efc8428
   Kingfisher: 184d4d1a8c36666e663caf8e08abe87898595c53
   NMapsMap: f151761c088d6516064c59da03ab6503769486e6
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
-PODFILE CHECKSUM: f2768bb5dda99fd759ab5b5683c25f204d70c5ac
+PODFILE CHECKSUM: 5418b5c5dc30dc3c618b2e1bbc5c2e16258e90ba
 
 COCOAPODS: 1.11.3

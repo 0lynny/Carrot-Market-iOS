@@ -87,8 +87,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="냉면 206m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6r9-KX-V50">
-                                        <rect key="frame" x="143.5" y="26.5" width="71" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="냉면   206m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6r9-KX-V50">
+                                        <rect key="frame" x="128.5" y="26.5" width="78.5" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="YCe-y2-7YY"/>
                                         </constraints>
@@ -137,7 +137,7 @@
                                     <constraint firstItem="Bwy-LI-c5z" firstAttribute="leading" secondItem="Dpg-Je-4bp" secondAttribute="leading" constant="25" id="HHF-Er-dWQ"/>
                                     <constraint firstAttribute="trailing" secondItem="qWe-l5-8ge" secondAttribute="trailing" constant="10" id="K1G-fD-tVK"/>
                                     <constraint firstAttribute="trailing" secondItem="Bwy-LI-c5z" secondAttribute="trailing" constant="25" id="Ubq-hf-bFk"/>
-                                    <constraint firstItem="6r9-KX-V50" firstAttribute="leading" secondItem="CKI-r4-poK" secondAttribute="trailing" constant="25" id="WNT-rE-K4E"/>
+                                    <constraint firstItem="6r9-KX-V50" firstAttribute="leading" secondItem="CKI-r4-poK" secondAttribute="trailing" constant="10" id="WNT-rE-K4E"/>
                                     <constraint firstAttribute="bottom" secondItem="qWe-l5-8ge" secondAttribute="bottom" constant="10" id="X9D-dP-MxA"/>
                                     <constraint firstItem="CKI-r4-poK" firstAttribute="top" secondItem="Dpg-Je-4bp" secondAttribute="top" constant="25" id="YVi-R5-zQl"/>
                                     <constraint firstItem="Bwy-LI-c5z" firstAttribute="top" secondItem="KCB-YN-YzD" secondAttribute="bottom" constant="20" id="flT-9S-gFa"/>
