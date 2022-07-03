@@ -53,6 +53,7 @@
 		69D1521228605FA5001CC615 /* PhotoDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1521128605FA5001CC615 /* PhotoDataModel.swift */; };
 		69D1521E286088BB001CC615 /* AddPhotoCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1521D286088BB001CC615 /* AddPhotoCVC.swift */; };
 		69D15221286088D9001CC615 /* ListPhotoCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D15220286088D9001CC615 /* ListPhotoCVC.swift */; };
+		69DE6E84286DC88300322DD9 /* MarkerBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DE6E83286DC88300322DD9 /* MarkerBottomSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,7 @@
 		69D1521128605FA5001CC615 /* PhotoDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDataModel.swift; sourceTree = "<group>"; };
 		69D1521D286088BB001CC615 /* AddPhotoCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoCVC.swift; sourceTree = "<group>"; };
 		69D15220286088D9001CC615 /* ListPhotoCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPhotoCVC.swift; sourceTree = "<group>"; };
+		69DE6E83286DC88300322DD9 /* MarkerBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerBottomSheet.swift; sourceTree = "<group>"; };
 		A7B69E211ED3493527988168 /* Pods-Carrot-Market.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carrot-Market.debug.xcconfig"; path = "Target Support Files/Pods-Carrot-Market/Pods-Carrot-Market.debug.xcconfig"; sourceTree = "<group>"; };
 		B8026ACEC18A1B73F325C60A /* Pods-Carrot-Market.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carrot-Market.release.xcconfig"; path = "Target Support Files/Pods-Carrot-Market/Pods-Carrot-Market.release.xcconfig"; sourceTree = "<group>"; };
 		F0E4FE74F6203CB24D6B2C6A /* Pods_Carrot_Market.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Carrot_Market.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -350,6 +352,7 @@
 			children = (
 				69952BED2847C022009F5269 /* NearbyViewController.swift */,
 				69952BEF2847C02F009F5269 /* NearbyStoryboard.storyboard */,
+				69DE6E83286DC88300322DD9 /* MarkerBottomSheet.swift */,
 			);
 			path = Nearby;
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 				6937152E28479064001C75DA /* NetworkResult.swift in Sources */,
 				6937154428479995001C75DA /* CustomTabBarViewController.swift in Sources */,
 				6926D861284A789700793639 /* UIImageView+.swift in Sources */,
+				69DE6E84286DC88300322DD9 /* MarkerBottomSheet.swift in Sources */,
 				693636AE28571C3A001333A1 /* ProductStatusResponseModel.swift in Sources */,
 				69952BF42847C05A009F5269 /* ChatsViewController.swift in Sources */,
 				69D15221286088D9001CC615 /* ListPhotoCVC.swift in Sources */,
